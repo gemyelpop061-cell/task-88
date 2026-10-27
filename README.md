@@ -1,52 +1,4 @@
 using System;
-using System.Linq;
-
-class Program
-{
-    static void Main()
-    {
-        try
-        {
-            Console.Write("أدخل نصاً للتحقق من حروف العلة: ");
-            string userInput = Console.ReadLine();
-
-            CheckForVowels(userInput);
-            
-            Console.WriteLine("النص صحيح ويحتوي على حروف علة.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[Exception]: {ex.Message}");
-        }
-    }
-
-    public static void CheckForVowels(string text)
-    {
-        if (string.IsNullOrEmpty(text))
-        {
-            throw new Exception("النص المدخل فارغ!");
-        }
-
-        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
-        bool hasVowels = text.Any(c => vowels.Contains(c));
-
-        if (!hasVowels)
-        {
-            throw new Exception("النص لا يحتوي على أي حروف علة!");
-        }
-    }
-}
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-using System;
 using System.Collections.Generic;
 
 class Program
@@ -56,7 +8,7 @@ class Program
         try
         {
             List<int> numbers = new List<int>();
-            Console.WriteLine("أدخل أرقاماً صحيحة (اكتب 'done' للإنتهاء):");
+            Console.WriteLine("Enter integers (type 'done' to finish):");
 
             while (true)
             {
@@ -68,21 +20,68 @@ class Program
                 {
                     if (numbers.Contains(num))
                     {
-                        throw new Exception($"الرقم {num} مكرر!");
+                        throw new Exception($"Number {num} is a duplicate!");
                     }
                     numbers.Add(num);
                 }
                 else
                 {
-                    Console.WriteLine("يرجى إدخال رقم صحيح صالح.");
+                    Console.WriteLine("Please enter a valid integer.");
                 }
             }
 
-            Console.WriteLine("تم إدخال جميع الأرقام بنجاح بدون تكرار.");
+            Console.WriteLine("All numbers entered successfully without duplicates.");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"[Exception]: {ex.Message}");
+        }
+    }
+}
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            Console.Write("Enter a string to check for vowels: ");
+            string userInput = Console.ReadLine();
+
+            CheckForVowels(userInput);
+            
+            Console.WriteLine("The text is valid and contains vowels.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Exception]: {ex.Message}");
+        }
+    }
+
+    public static void CheckForVowels(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            throw new Exception("Input text is empty!");
+        }
+
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        bool hasVowels = text.Any(c => vowels.Contains(c));
+
+        if (!hasVowels)
+        {
+            throw new Exception("The text does not contain any vowels!");
         }
     }
 }
