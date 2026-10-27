@@ -5,12 +5,12 @@ class Program
 {
     static void Main()
     {
-        try
-        {
-            List<int> numbers = new List<int>();
-            Console.WriteLine("Enter integers (type 'done' to finish):");
+        List<int> numbers = new List<int>();
+        Console.WriteLine("Enter integers (type 'done' to finish):");
 
-            while (true)
+        while (true)
+        {
+            try
             {
                 string input = Console.ReadLine();
                 if (input.ToLower() == "done")
@@ -29,13 +29,13 @@ class Program
                     Console.WriteLine("Please enter a valid integer.");
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Exception]: {ex.Message}");
+            }
+        }
 
-            Console.WriteLine("All numbers entered successfully without duplicates.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[Exception]: {ex.Message}");
-        }
+        Console.WriteLine("All numbers entered successfully without duplicates.");
     }
 }
 
